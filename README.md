@@ -9,6 +9,3 @@ Features :
   - radio button to change between directed graph / non-directed graph
   - file with adjacency list
   - file with adjacency matrix
-
-The program checks for :
-  - 
