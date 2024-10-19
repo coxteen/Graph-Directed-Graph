@@ -3,8 +3,8 @@ import java.awt.*;
 public class Edge {
 
     protected Node node1, node2;
-    protected Color edge_color = Color.BLACK;
-    protected int line_width = 3;
+    protected Color edgeColor = Color.BLACK;
+    protected int lineWidth = 3;
     protected int arrowLength = 15;
 
     public Edge(Node node1, Node node2) {

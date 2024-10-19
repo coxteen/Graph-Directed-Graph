@@ -4,12 +4,12 @@ public class Node {
 
     protected int x, y;
     protected static int radius = 60;
-    protected Color node_color = Color.GREEN;
-    protected Color selected_node_color = Color.DARK_GRAY;
+    protected Color nodeColor = Color.GREEN;
+    protected Color selectedNodeColor = Color.DARK_GRAY;
 
     protected Integer value;
 
-    protected int font_size = radius / 2;
+    protected int fontSize = radius / 2;
     protected String font_name = "Serif";
 
     public Node(int x, int y, int value) {
@@ -18,7 +18,7 @@ public class Node {
         this.value = value;
     }
 
-    protected boolean is_clicked(int mouseX, int mouseY) {
+    protected boolean isClicked(int mouseX, int mouseY) {
         return Math.abs(x - mouseX) < radius / 2 && Math.abs(y - mouseY) < radius / 2;
     }
 }

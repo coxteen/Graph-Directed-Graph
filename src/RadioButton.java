@@ -11,8 +11,8 @@ public class RadioButton {
         return Math.abs(x - mouseX) < radius / 2 && Math.abs(y - mouseY) < radius / 2;
     }
 
-    public void switch_graph_type() {
-        Graph.is_oriented = !Graph.is_oriented;
+    public void switchGraphType() {
+        Graph.isOriented = !Graph.isOriented;
         selected = !selected;
     }
 }

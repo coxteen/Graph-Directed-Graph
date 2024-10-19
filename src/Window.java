@@ -1,18 +1,17 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
 
 public class Window extends JPanel implements MouseListener, MouseMotionListener, KeyListener {
 
-    private RadioButton button = new RadioButton();
+    private final RadioButton button = new RadioButton();
 
     private final Graph graph = new Graph();
 
     private boolean dragging = false;
-    private Node dragged_node = null;
+    private Node draggedNode = null;
     private int dragOffsetX, dragOffsetY;
-    private int initial_position_x, initial_position_y;
+    private int initialPositionX, initialPositionY;
 
     public Window() {
         addMouseListener(this);
@@ -40,24 +39,24 @@ public class Window extends JPanel implements MouseListener, MouseMotionListener
 
     private void left_click_action(MouseEvent e){
         if (button.isClicked(e.getX(), e.getY())) {
-            button.switch_graph_type();
+            button.switchGraphType();
             return;
         }
         for (Node node : graph.nodes) {
-            if (node.is_clicked(e.getX(), e.getY())) {
-                if (graph.selected_node == null) {
-                    graph.selected_node = node;
+            if (node.isClicked(e.getX(), e.getY())) {
+                if (graph.selectedNode == null) {
+                    graph.selectedNode = node;
                 } else {
-                    graph.add_edge(graph.selected_node, node);
-                    graph.selected_node = null;
-                    File.write_in_files(graph.edges, graph.nodes.size());
+                    graph.addEdge(graph.selectedNode, node);
+                    graph.selectedNode = null;
+                    File.writeInFiles(graph.edges, graph.nodes.size());
                 }
                 return;
             }
         }
-        graph.add_node(e.getX(), e.getY());
-        graph.selected_node = null;
-        File.write_in_files(graph.edges, graph.nodes.size());
+        graph.addNode(e.getX(), e.getY());
+        graph.selectedNode = null;
+        File.writeInFiles(graph.edges, graph.nodes.size());
     }
 
     @Override
@@ -71,14 +70,14 @@ public class Window extends JPanel implements MouseListener, MouseMotionListener
     @Override
     public void mousePressed(MouseEvent e) {
         for (Node node : graph.nodes) {
-            if (node.is_clicked(e.getX(), e.getY())) {
+            if (node.isClicked(e.getX(), e.getY())) {
                 dragging = true;
-                dragged_node = node;
+                draggedNode = node;
                 dragOffsetX = e.getX() - node.x;
                 dragOffsetY = e.getY() - node.y;
 
-                initial_position_x = node.x;
-                initial_position_y = node.y;
+                initialPositionX = node.x;
+                initialPositionY = node.y;
                 return;
             }
         }
@@ -86,20 +85,20 @@ public class Window extends JPanel implements MouseListener, MouseMotionListener
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if (dragging && dragged_node != null && graph.is_overlapping(dragged_node)) {
-            dragged_node.x = initial_position_x;
-            dragged_node.y = initial_position_y;
+        if (dragging && draggedNode != null && graph.isOverlapping(draggedNode)) {
+            draggedNode.x = initialPositionX;
+            draggedNode.y = initialPositionY;
         }
         dragging = false;
-        dragged_node = null;
+        draggedNode = null;
         repaint();
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        if (dragging && dragged_node != null) {
-            dragged_node.x = e.getX() - dragOffsetX;
-            dragged_node.y = e.getY() - dragOffsetY;
+        if (dragging && draggedNode != null) {
+            draggedNode.x = e.getX() - dragOffsetX;
+            draggedNode.y = e.getY() - dragOffsetY;
             repaint();
         }
     }
@@ -108,8 +107,8 @@ public class Window extends JPanel implements MouseListener, MouseMotionListener
     public void keyPressed(KeyEvent e) {
         int key_code = e.getKeyCode();
         if (key_code == KeyEvent.VK_ENTER) {
-            Graph.is_oriented = !Graph.is_oriented;
-            File.write_in_files(graph.edges, graph.nodes.size());
+            Graph.isOriented = !Graph.isOriented;
+            File.writeInFiles(graph.edges, graph.nodes.size());
         }
         repaint();
     }
