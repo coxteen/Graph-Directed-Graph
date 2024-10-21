@@ -5,12 +5,12 @@ public class Node {
     protected int x, y;
     protected static int radius = 60;
     protected Color nodeColor = Color.GREEN;
-    protected Color selectedNodeColor = Color.DARK_GRAY;
+    protected Color selectedNodeColor = Color.LIGHT_GRAY;
 
     protected Integer value;
 
     protected int fontSize = radius / 2;
-    protected String font_name = "Serif";
+    protected static String font_name = "Arial";
 
     public Node(int x, int y, int value) {
         this.x = x;

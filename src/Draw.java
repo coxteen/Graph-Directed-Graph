@@ -46,7 +46,7 @@ public class Draw {
     }
 
     private static void drawNumber(Graphics2D g2d, Node node) {
-        Font font = new Font("Arial", Font.BOLD, node.fontSize);
+        Font font = new Font(Node.font_name, Font.BOLD, node.fontSize);
         g2d.setFont(font);
         g2d.setColor(Color.BLACK);
         if (node.value < 10) {
@@ -65,6 +65,9 @@ public class Draw {
             g2d.setColor(Color.BLACK);
             g2d.fillOval(button.x - button.radius / 4, button.y - button.radius / 4, button.radius / 2, button.radius / 2);
         }
+        g2d.setFont(new Font(Node.font_name, Font.BOLD, 16));
+        g2d.setColor(Color.BLACK);
+        g2d.drawString("Orientat", 60, 38);
     }
 
     protected static void draw(Graphics2D g2d, Graph graph, RadioButton button) {
