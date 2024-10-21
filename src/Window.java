@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Window extends JPanel implements MouseListener, MouseMotionListener, KeyListener {
+public class Window extends JPanel implements MouseListener, MouseMotionListener {
 
     private final RadioButton button = new RadioButton();
 
@@ -16,9 +16,6 @@ public class Window extends JPanel implements MouseListener, MouseMotionListener
     public Window() {
         addMouseListener(this);
         addMouseMotionListener(this);
-        addKeyListener(this);
-        setFocusable(true);
-        requestFocusInWindow();
     }
 
     public static void draw_window() {
@@ -104,24 +101,9 @@ public class Window extends JPanel implements MouseListener, MouseMotionListener
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
-        int key_code = e.getKeyCode();
-        if (key_code == KeyEvent.VK_ENTER) {
-            Graph.isOriented = !Graph.isOriented;
-            File.writeInFiles(graph.edges, graph.nodes.size());
-        }
-        repaint();
-    }
-
-    @Override
     public void mouseEntered(MouseEvent e) {}
     @Override
     public void mouseExited(MouseEvent e) {}
-
-    @Override
-    public void keyTyped(KeyEvent e) {}
-    @Override
-    public void keyReleased(KeyEvent e) {}
 
     @Override
     public void mouseMoved(MouseEvent e) {}
