@@ -43,7 +43,6 @@ public class File {
         }
         catch (Exception e) {
             System.out.println("An error occurred while writing the matrix to the file.");
-            e.printStackTrace();
         }
     }
 
@@ -71,7 +70,6 @@ public class File {
         }
         catch (Exception e) {
             System.out.println("An error occurred while writing the list to the file.");
-            e.printStackTrace();
         }
     }
 }
