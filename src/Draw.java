@@ -1,4 +1,7 @@
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.BasicStroke;
+import java.awt.Font;
 
 public class Draw {
 
@@ -57,7 +60,7 @@ public class Draw {
         }
     }
 
-    protected static void drawButton(Graphics2D g2d, RadioButton button) {
+    private static void drawButton(Graphics2D g2d, RadioButton button) {
         g2d.setStroke(new BasicStroke(button.strokeWidth));
         g2d.drawOval(button.x - button.radius / 2, button.y - button.radius / 2, button.radius, button.radius);
 
@@ -70,7 +73,7 @@ public class Draw {
         g2d.drawString("Orientat", 60, 38);
     }
 
-    protected static void draw(Graphics2D g2d, Graph graph, RadioButton button) {
+    public static void draw(Graphics2D g2d, Graph graph, RadioButton button) {
         for (Edge edge : graph.edges) {
             drawEdge(g2d, edge);
         }

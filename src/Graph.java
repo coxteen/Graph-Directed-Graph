@@ -2,12 +2,12 @@ import java.util.ArrayList;
 
 public class Graph {
 
-    protected ArrayList<Node> nodes = new ArrayList<>();
-    protected ArrayList<Edge> edges = new ArrayList<>();
+    public ArrayList<Node> nodes = new ArrayList<>();
+    public ArrayList<Edge> edges = new ArrayList<>();
 
-    protected Node selectedNode = null;
+    public Node selectedNode = null;
 
-    protected static boolean isOriented = false;
+    public static boolean isOriented = false;
 
     public Boolean isOverlapping(Node node) {
         for (Node list_node : nodes) {
@@ -18,14 +18,14 @@ public class Graph {
         return false;
     }
 
-    protected void addNode(int x, int y) {
+    public void addNode(int x, int y) {
         Node node = new Node(x, y, nodes.size() + 1);
         if(!isOverlapping(node)) {
             nodes.add(node);
         }
     }
 
-    protected void addEdge(Node start, Node end) {
+    public void addEdge(Node start, Node end) {
         if(start == end) {
             return;
         }

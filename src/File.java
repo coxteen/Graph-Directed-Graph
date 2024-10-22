@@ -66,7 +66,6 @@ public class File {
             for (int i = 1; i <= size; ++i) {
                 listWriter.write(i + " : " + list.get(i).toString() + "\n");
             }
-
         }
         catch (Exception e) {
             System.out.println("An error occurred while writing the list to the file.");

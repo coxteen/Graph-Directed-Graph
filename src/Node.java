@@ -1,16 +1,16 @@
-import java.awt.*;
+import java.awt.Color;
 
 public class Node {
 
-    protected int x, y;
-    protected static int radius = 60;
-    protected Color nodeColor = Color.GREEN;
-    protected Color selectedNodeColor = Color.LIGHT_GRAY;
+    public int x, y;
+    public static int radius = 60;
+    public Color nodeColor = Color.GREEN;
+    public Color selectedNodeColor = Color.LIGHT_GRAY;
 
-    protected Integer value;
+    public int value;
 
-    protected int fontSize = radius / 2;
-    protected static String font_name = "Arial";
+    public int fontSize = radius / 2;
+    public static String font_name = "Arial";
 
     public Node(int x, int y, int value) {
         this.x = x;
@@ -18,7 +18,7 @@ public class Node {
         this.value = value;
     }
 
-    protected boolean isClicked(int mouseX, int mouseY) {
+    public boolean isClicked(int mouseX, int mouseY) {
         return Math.abs(x - mouseX) < radius / 2 && Math.abs(y - mouseY) < radius / 2;
     }
 }
