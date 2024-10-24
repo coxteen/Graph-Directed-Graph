@@ -28,9 +28,9 @@ public class File {
             int[][] matrix = new int[size][size];
 
             for (Edge e : edges) {
-                matrix[e.node1.value - 1][e.node2.value - 1] = 1;
+                matrix[e.startNode.value - 1][e.endNode.value - 1] = 1;
                 if (!Graph.isOriented) {
-                    matrix[e.node2.value - 1][e.node1.value - 1] = 1;
+                    matrix[e.endNode.value - 1][e.startNode.value - 1] = 1;
                 }
             }
 
@@ -57,9 +57,9 @@ public class File {
                 list.put(i, new ArrayList<>());
             }
             for (Edge e : edges) {
-                list.get(e.node1.value).add(e.node2.value);
+                list.get(e.startNode.value).add(e.endNode.value);
                 if (!Graph.isOriented) {
-                    list.get(e.node2.value).add(e.node1.value);
+                    list.get(e.endNode.value).add(e.startNode.value);
                 }
             }
 

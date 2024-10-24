@@ -6,8 +6,8 @@ import java.awt.Font;
 public class Draw {
 
     private static void drawArrows(Graphics2D g2d, Edge edge) {
-        int deltaX = edge.node2.x - edge.node1.x;
-        int deltaY = edge.node2.y - edge.node1.y;
+        int deltaX = edge.endNode.x - edge.startNode.x;
+        int deltaY = edge.endNode.y - edge.startNode.y;
 
         double angle = Math.atan2(deltaY, deltaX);
 
@@ -15,23 +15,23 @@ public class Draw {
 
         double[] directionVector = {deltaX / magnitude, deltaY / magnitude};
 
-        int xArrow1 = (int) (edge.node2.x - edge.arrowLength * Math.cos(angle - Math.PI / 6));
-        int yArrow1 = (int) (edge.node2.y - edge.arrowLength * Math.sin(angle - Math.PI / 6));
-        int xArrow2 = (int) (edge.node2.x - edge.arrowLength * Math.cos(angle + Math.PI / 6));
-        int yArrow2 = (int) (edge.node2.y - edge.arrowLength * Math.sin(angle + Math.PI / 6));
+        int xArrow1 = (int) (edge.endNode.x - edge.arrowLength * Math.cos(angle - Math.PI / 6));
+        int yArrow1 = (int) (edge.endNode.y - edge.arrowLength * Math.sin(angle - Math.PI / 6));
+        int xArrow2 = (int) (edge.endNode.x - edge.arrowLength * Math.cos(angle + Math.PI / 6));
+        int yArrow2 = (int) (edge.endNode.y - edge.arrowLength * Math.sin(angle + Math.PI / 6));
 
         int differenceX = (int) (directionVector[0] * Node.radius / 2);
         int differenceY = (int) (directionVector[1] * Node.radius / 2);
 
-        g2d.drawLine(edge.node2.x - differenceX, edge.node2.y - differenceY, xArrow1 - differenceX, yArrow1 - differenceY);
-        g2d.drawLine(edge.node2.x - differenceX, edge.node2.y - differenceY, xArrow2 - differenceX, yArrow2 - differenceY);
+        g2d.drawLine(edge.endNode.x - differenceX, edge.endNode.y - differenceY, xArrow1 - differenceX, yArrow1 - differenceY);
+        g2d.drawLine(edge.endNode.x - differenceX, edge.endNode.y - differenceY, xArrow2 - differenceX, yArrow2 - differenceY);
     }
 
 
     private static void drawEdge(Graphics2D g2d, Edge edge) {
         g2d.setColor(edge.edgeColor);
         g2d.setStroke(new BasicStroke(edge.lineWidth));
-        g2d.drawLine(edge.node1.x, edge.node1.y, edge.node2.x, edge.node2.y);
+        g2d.drawLine(edge.startNode.x, edge.startNode.y, edge.endNode.x, edge.endNode.y);
 
         if (Graph.isOriented) {
             drawArrows(g2d, edge);

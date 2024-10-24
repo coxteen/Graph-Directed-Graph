@@ -5,7 +5,7 @@ public class Node {
     public int x, y;
     public static int radius = 60;
     public Color nodeColor = Color.GREEN;
-    public Color selectedNodeColor = Color.LIGHT_GRAY;
+    public Color selectedNodeColor = Color.GRAY;
 
     public int value;
 

@@ -30,8 +30,8 @@ public class Graph {
             return;
         }
         for(Edge edge : edges) {
-            if ((edge.node1 == start && edge.node2 == end) ||
-                    (!Graph.isOriented && edge.node1 == end && edge.node2 == start)) {
+            if ((edge.startNode == start && edge.endNode == end) ||
+                    (!Graph.isOriented && edge.startNode == end && edge.endNode == start)) {
                 return;
             }
         }

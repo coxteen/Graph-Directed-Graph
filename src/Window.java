@@ -21,15 +21,6 @@ public class Window extends JPanel implements MouseListener, MouseMotionListener
         addMouseMotionListener(this);
     }
 
-    public static void draw_window() {
-        JFrame frame = new JFrame("Graph Builder");
-        Window window = new Window();
-        frame.add(window);
-        frame.setSize(800, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-    }
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -40,6 +31,7 @@ public class Window extends JPanel implements MouseListener, MouseMotionListener
     private void left_click_action(MouseEvent e){
         if (button.isClicked(e.getX(), e.getY())) {
             button.switchGraphType();
+            File.writeInFiles(graph.edges, graph.nodes.size());
             return;
         }
         for (Node node : graph.nodes) {
