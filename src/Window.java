@@ -30,8 +30,8 @@ public class Window extends JPanel implements MouseListener, MouseMotionListener
 
     private void left_click_action(MouseEvent e){
         if (button.isClicked(e.getX(), e.getY())) {
-            button.switchGraphType();
-            File.writeInFiles(graph.edges, graph.nodes.size());
+            button.switchGraphType(graph);
+            File.writeInFiles(graph);
             return;
         }
         for (Node node : graph.nodes) {
@@ -41,14 +41,14 @@ public class Window extends JPanel implements MouseListener, MouseMotionListener
                 } else {
                     graph.addEdge(graph.selectedNode, node);
                     graph.selectedNode = null;
-                    File.writeInFiles(graph.edges, graph.nodes.size());
+                    File.writeInFiles(graph);
                 }
                 return;
             }
         }
         graph.addNode(e.getX(), e.getY());
         graph.selectedNode = null;
-        File.writeInFiles(graph.edges, graph.nodes.size());
+        File.writeInFiles(graph);
     }
 
     @Override

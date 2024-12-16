@@ -7,12 +7,14 @@ public class RadioButton {
 
     public boolean selected = false;
 
+    public String fontName = "Arial";
+
     public boolean isClicked(int mouseX, int mouseY) {
         return Math.abs(x - mouseX) < radius / 2 && Math.abs(y - mouseY) < radius / 2;
     }
 
-    public void switchGraphType() {
-        Graph.isOriented = !Graph.isOriented;
+    public void switchGraphType(Graph graph) {
+        graph.isOriented = !graph.isOriented;
         selected = !selected;
     }
 }

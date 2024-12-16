@@ -10,7 +10,7 @@ public class Node {
     public int value;
 
     public int fontSize = radius / 2;
-    public static String font_name = "Arial";
+    public String fontName = "Arial";
 
     public Node(int x, int y, int value) {
         this.x = x;

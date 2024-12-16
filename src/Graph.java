@@ -7,7 +7,7 @@ public class Graph {
 
     public Node selectedNode = null;
 
-    public static boolean isOriented = false;
+    public boolean isOriented = false;
 
     public Boolean isOverlapping(Node node) {
         for (Node list_node : nodes) {
@@ -31,7 +31,7 @@ public class Graph {
         }
         for(Edge edge : edges) {
             if ((edge.startNode == start && edge.endNode == end) ||
-                    (!Graph.isOriented && edge.startNode == end && edge.endNode == start)) {
+                    (!isOriented && edge.startNode == end && edge.endNode == start)) {
                 return;
             }
         }

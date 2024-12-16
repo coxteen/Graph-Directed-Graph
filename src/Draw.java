@@ -28,12 +28,12 @@ public class Draw {
     }
 
 
-    private static void drawEdge(Graphics2D g2d, Edge edge) {
+    private static void drawEdge(Graphics2D g2d, Graph graph, Edge edge) {
         g2d.setColor(edge.edgeColor);
         g2d.setStroke(new BasicStroke(edge.lineWidth));
         g2d.drawLine(edge.startNode.x, edge.startNode.y, edge.endNode.x, edge.endNode.y);
 
-        if (Graph.isOriented) {
+        if (graph.isOriented) {
             drawArrows(g2d, edge);
         }
     }
@@ -49,7 +49,7 @@ public class Draw {
     }
 
     private static void drawNumber(Graphics2D g2d, Node node) {
-        Font font = new Font(Node.font_name, Font.BOLD, node.fontSize);
+        Font font = new Font(node.fontName, Font.BOLD, node.fontSize);
         g2d.setFont(font);
         g2d.setColor(Color.BLACK);
         if (node.value < 10) {
@@ -68,14 +68,14 @@ public class Draw {
             g2d.setColor(Color.BLACK);
             g2d.fillOval(button.x - button.radius / 4, button.y - button.radius / 4, button.radius / 2, button.radius / 2);
         }
-        g2d.setFont(new Font(Node.font_name, Font.BOLD, 16));
+        g2d.setFont(new Font(button.fontName, Font.BOLD, 16));
         g2d.setColor(Color.BLACK);
         g2d.drawString("Orientat", 60, 38);
     }
 
     public static void draw(Graphics2D g2d, Graph graph, RadioButton button) {
         for (Edge edge : graph.edges) {
-            drawEdge(g2d, edge);
+            drawEdge(g2d, graph, edge);
         }
         for (Node node : graph.nodes) {
             drawNode(g2d, node, graph.selectedNode);
